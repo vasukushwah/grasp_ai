@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <title>Document</title>
+</head>
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% block header %}
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">{% block heading %}GraspAI {% endblock %}</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="#">Contact</a>
+        </nav>
+      </div>
+    </header>
+    {% endblock %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}
+    <footer class="mt-auto text-white-50">
+      <p>Made by <a href="https://github.com/vasukushwah" class="text-white">Vasu Kushwah</a>
+    </footer>
+    {% endblock %}
+  </div>
+
+
+
+  {% block js %}
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  {% endblock %}
+</body>
+
+</html>

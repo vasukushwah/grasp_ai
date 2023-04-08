@@ -1,0 +1,150 @@
+.main {
+	height: 100vh;
+	padding-top: 70px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+  
+/* --------------------- typing dot animation ----------------------- */
+
+#typing-dots {
+    font-size: 24px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  #typing-dots span {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+
+  .answer::after {
+    content: "";
+    position: absolute;
+    /* Remove display: inline-block if not required to be on the same line as text etc */
+    display: inline-block;
+    background-color: #606060;
+    vertical-align: top;
+    width: 10px;
+    /* Set height to the line height of .text */
+    height: 24px;
+    /* 
+    Animation paramaters:
+    blink = animation-name, 
+    1s = animation-duration, 
+    step-end = animation-timing-function,
+    infinite = animation-iteration-count
+    */
+    -webkit-animation: blink 1s step-end infinite;
+    animation: blink 1s step-end infinite;
+  }
+  
+  @-webkit-keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  @keyframes blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+
+  .message-container {
+    height: 600px;
+    overflow-y: auto;
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #80808014;
+  }
+  
+  .incoming-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .outgoing-message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #80808014;
+    text-align: left;
+  }
+
+  .input{
+    background-color:  #80808014;
+    border-color: #80808014;
+    color: #ffff;
+                                    
+  }
+  input[type="text"]:focus  {
+    background-color:  #80808014;
+    border-color: #80808014;
+    color: #ffff;
+  }
+  .thumbnail{
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #80808014;
+  }
+  .thumbnail-container{
+      width: 273px;
+      height: 400px;
+      overflow: hidden; /* This ensures the image does not overflow the div */
+
+  }
+  .thumbnail-container img {
+    width: 100%;
+    height: auto;
+    display: block; /* This centers the image within the div */
+  }
+  
+ 
+  /* Styles for the vertical scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
