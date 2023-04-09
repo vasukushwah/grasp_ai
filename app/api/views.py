@@ -13,10 +13,7 @@ import traceback
 import time
 
 
-# Create your views here.
-
-
-class FileUploadView(APIView):
+class FilesView(APIView):
     def post(self, request, format=None):
         serializer = FileUploadSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -29,8 +26,6 @@ class FileUploadView(APIView):
             status=status.HTTP_400_BAD_REQUEST,
         )
 
-
-class UploadedFilesView(APIView):
     def get(self, request, format=None):
         try:
             file_uploads = FileUpload.objects.all()
@@ -48,8 +43,6 @@ class UploadedFilesView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-
-class DeleteFileView(APIView):
     def delete(self, request, id):
         try:
             # get the file by id and delete it from the database
@@ -92,6 +85,7 @@ class AskQuestionView(APIView):
         try:
             body = dict(request.data)
             id = body.get("id")
+            print(id)
             question = body.get("question")
             if not question.endswith("?"):
                 question += "?"

@@ -5,7 +5,16 @@
 
 
 <div class="container">
-
+    <div class="position-fixed top-0 end-0 p-3">
+        <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-3">
             <!-- Thumbnail Card -->
@@ -26,8 +35,6 @@
                         <img src="https://m.media-amazon.com/images/I/41+eK8zBwQL._SX319_BO1,204,203,200_.jpg"
                             class="img-fluid" alt="File Thumbnail">
                     </div>
-                    <!-- <img src="https://m.media-amazon.com/images/I/41+eK8zBwQL._SX319_BO1,204,203,200_.jpg"
-                        class="img-fluid" alt="File Thumbnail"> -->
                 </div>
             </div>
         </div>
@@ -90,6 +97,8 @@
     let intervalId;
     let i = 0;
     const questionInput = document.getElementById("question");
+    const dropdown = document.querySelector(".form-select");
+    let selectedOption = dropdown.options[dropdown.selectedIndex].value;
     const submitBtn = document.getElementById("submitBtn");
 
     questionInput.addEventListener("input", function () {
@@ -100,6 +109,9 @@
         }
     });
 
+    dropdown.onchange = (e) => {
+        selectedOption = e.target.value;
+    };
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
 
@@ -117,13 +129,13 @@
 
         chatLogDiv.appendChild(questionDivElement);
         add_dot_animation()
-        const response = await fetch('/api/pdf/ask/', {
+        const response = await fetch('/api/ask/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
             },
-            body: JSON.stringify({ id: 2, question }) // Send the message as a JSON object in the request body
+            body: JSON.stringify({ id: selectedOption, question }) // Send the message as a JSON object in the request body
         });
 
         if (response.ok) {
